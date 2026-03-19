@@ -338,12 +338,12 @@ export default function HoneyBookAutomation() {
     : "This automation will trigger once, only after all of these tags are on the project.";
 
   return (
-    <div style={{ fontFamily: font, display: "flex", flexDirection: "column", height: "100%", background: c.canvasBg, overflow: "hidden", position: "relative" }}>
+    <div style={{ fontFamily: font, display: "flex", height: "100vh", background: c.canvasBg, overflow: "hidden" }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
       {/* Top bar */}
       <div style={{
-        position: "sticky", top: 0, left: 0, right: 0, height: "52px", flexShrink: 0,
+        position: "fixed", top: 0, left: 0, right: 0, height: "52px",
         background: c.white, borderBottom: `1px solid ${c.borderLight}`,
         display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", zIndex: 20,
       }}>
@@ -369,13 +369,10 @@ export default function HoneyBookAutomation() {
         </div>
       </div>
 
-      {/* Body row: canvas + right panel */}
-      <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
-
       {/* Canvas */}
       <div style={{
         flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
-        justifyContent: "center", paddingRight: 0, overflow: "auto",
+        justifyContent: "center", paddingTop: "52px", paddingRight: "380px",
       }}>
         <TriggerNode label={triggerLabel} showWarning={showWarning} />
         <ConnectorWithMenu color={c.greenPlus} />
@@ -386,7 +383,7 @@ export default function HoneyBookAutomation() {
 
       {/* ─── Right Panel ─── */}
       <div style={{
-        width: "380px", flexShrink: 0,
+        position: "fixed", top: "52px", right: 0, width: "380px", height: "calc(100vh - 52px)",
         background: c.white, borderLeft: `1px solid ${c.borderLight}`, overflowY: "auto", zIndex: 10,
       }}>
         <div style={{
@@ -524,7 +521,6 @@ export default function HoneyBookAutomation() {
           </div>
         </div>
       </div>
-      </div>{/* end body row */}
     </div>
   );
 }
